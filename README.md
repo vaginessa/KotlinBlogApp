@@ -1,5 +1,4 @@
-<img src="" alt="react boilerplate banner" align="center" />
-
+# Kotlin Blog App
 Simple Android App for Wordpress Blog
 
 ## Quick start
