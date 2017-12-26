@@ -1,7 +1,5 @@
 package `in`.bittupatel.blogapp
 
-import android.widget.ListAdapter
-
 /**
  * Created by bittu.dvlpr on 24/12/17.
  */
@@ -9,5 +7,8 @@ import android.widget.ListAdapter
 
 class HomeFeed(val posts: List<Posts>)
 
-class Posts(val title_plain: String)
+class Posts(val title_plain: String, val date: String, val author: Author, val attachments: ArrayList<Attachments>)
 
+class Author(val name: String)
+
+class Attachments(val url: String)

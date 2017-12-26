@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     fun fetchJson() {
         println("Attempting to Fetch JSON")
 
-        //REST API url goes here
+        //REST API Url
         val url = "API_URL"
 
         val request = Request.Builder().url(url).build()
