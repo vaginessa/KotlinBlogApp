@@ -1,6 +1,7 @@
 package `in`.bittupatel.blogapp
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.text.Html
 import android.view.LayoutInflater
@@ -37,10 +38,37 @@ class MainAdapter(val homeFeed: HomeFeed): RecyclerView.Adapter<CustomViewHolder
         val thumbnailImageView = holder?.view?.postThumbnail
         Picasso.with(holder?.view?.context).load(post.attachments[0].url).into(thumbnailImageView)
 
+        holder?.post = post
     }
 
 }
 
-class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+class CustomViewHolder(val view: View, var post: Post? = null): RecyclerView.ViewHolder(view) {
+    companion object {
 
+        val POST_IMAGE_KEY = "POST_IMAGE"
+        val POST_TITLE_KEY = "POST_TITLE"
+        val POST_AUTHOR_KEY = "POST_AUTHOR"
+        val POST_DATE_KEY = "POST_DATE"
+        val POST_CONTENT_KEY = "POST_CONTENT"
+
+    }
+
+    init {
+        view.setOnClickListener {
+            val intent = Intent(view.context, PostDetail::class.java)
+
+            intent.putExtra(POST_IMAGE_KEY, post?.attachments!![0]?.url)
+            intent.putExtra(POST_TITLE_KEY, post?.title_plain)
+            intent.putExtra(POST_AUTHOR_KEY, post?.author?.name)
+            intent.putExtra(POST_DATE_KEY, post?.date)
+            intent.putExtra(POST_CONTENT_KEY, post?.content)
+
+
+
+            view.context.startActivity(intent)
+        }
+    }
 }
+
+

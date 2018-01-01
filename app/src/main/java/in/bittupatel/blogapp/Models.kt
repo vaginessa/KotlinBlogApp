@@ -5,9 +5,9 @@ package `in`.bittupatel.blogapp
  */
 
 
-class HomeFeed(val posts: List<Posts>)
+class HomeFeed(val posts: List<Post>)
 
-class Posts(val title_plain: String, val date: String, val author: Author, val attachments: ArrayList<Attachments>)
+class Post(val id: Int, val title_plain: String, val content: String, val date: String, val author: Author, val attachments: ArrayList<Attachments>)
 
 class Author(val name: String)
 

@@ -3,6 +3,7 @@ package `in`.bittupatel.blogapp
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerView_main.layoutManager = LinearLayoutManager(this)
+        recyclerView_main.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
         fetchJson()
     }
 
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         println("Attempting to Fetch JSON")
 
         //REST API Url
-        val url = "API_URL"
+        val url = "http://www.thetechsamachar.com/?json=get_posts"
 
         val request = Request.Builder().url(url).build()
 
