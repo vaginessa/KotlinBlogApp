@@ -1,7 +1,11 @@
 package blogapp.bittupatel.`in`.kotlinblogapp
 
+import android.content.Context
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import blogapp.bittupatel.`in`.kotlinblogapp.fragments.CategoryFragment
 import blogapp.bittupatel.`in`.kotlinblogapp.fragments.FavFragment
@@ -36,6 +40,18 @@ class MainActivity : AppCompatActivity(), AHBottomNavigation.OnTabSelectedListen
         navigation.setOnTabSelectedListener(this)
         this.createNavItems()
 
+        if (isNetworkConnected() == null) {
+            Snackbar.make(mainCor, "No Connection", 2000).show()
+        }
+
+
+    }
+
+    private fun isNetworkConnected(): NetworkInfo? {
+
+        val cm: ConnectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val netInfo = cm.activeNetworkInfo
+        return netInfo
     }
 
     private fun createNavItems() {
@@ -50,7 +66,7 @@ class MainActivity : AppCompatActivity(), AHBottomNavigation.OnTabSelectedListen
         navigation.addItem(fav)
 
         //SET PROPERTIES
-        navigation.defaultBackgroundColor = Color.parseColor("#ffffff")
+        navigation.defaultBackgroundColor = Color.parseColor("#FFF3E0")
         navigation.accentColor = Color.parseColor("#FFC107")
         navigation.inactiveColor = Color.parseColor("#BDBDBD")
 

@@ -1,16 +1,17 @@
 package blogapp.bittupatel.`in`.kotlinblogapp
 
+// Post Model
+class Post(var id: Int, var title_plain: String, var content: String, var date: String, var author: String, var thumbnail_images: String)
 
-class HomeFeed(val posts: List<Post>)
+//Category Model
+class Category(var id: Int, var title: String)
 
-class Post(val id: Int, val title_plain: String, val content: String, val date: String, val author: Author, val attachments: ArrayList<Attachments>, val categories: ArrayList<Categories>)
-
-class Author(val name: String)
-
-class Attachments(val url: String)
-
-class Categories(val title: String)
-
-class CategoryFeed(val categories: List<Category>)
-
-class Category(val id: Int, val title: String)
+//Favourite Model
+class FavPost {
+    var id: Int = 0
+    lateinit var title: String
+    lateinit var date: String
+    lateinit var author: String
+    lateinit var thumbnail: String
+    lateinit var content: String
+}
